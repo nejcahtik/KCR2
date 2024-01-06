@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.kcr2.CreditcarddetailsController"
+      prefHeight="500.0" prefWidth="600.0">
+
+    <Text text="Prosimo, vnesite podatke iz kreditne kartice"/>
+
+    <TextField promptText="Ime in priimek" fx:id="name"/>
+    <TextField promptText="Številka kartice" fx:id="cardnumber"/>
+    <TextField promptText="CCV koda" fx:id="ccv"/>
+    <Text text="Napaka: Vsa polja so obvezna" fx:id="errorname"/>
+
+    <Text text="Napaka: Številka kartice in CCV morata biti številki" fx:id="errorcardnumber"/>
+
+    <HBox alignment="CENTER">
+        <TextField promptText="Leto preteka" fx:id="year"/>
+        <TextField promptText="Mesec preteka" fx:id="month"/>
+    </HBox>
+
+    <Text text="Napaka: Leto in mesec morata biti številki" fx:id="errornumber"/>
+
+    <Button text="Potrdi plačilo" onAction="#onConfirmPayment"/>
+
+
+</VBox>

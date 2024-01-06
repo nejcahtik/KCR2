@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.kcr2.OrderdetailsController"
+      prefHeight="500.0" prefWidth="600.0">
+
+    <VBox alignment="CENTER">
+        <Text text="Datum prevzema in oddaje" style="-fx-font-weight: bold;"/>
+        <HBox alignment="CENTER">
+            <Text text="Od: "/>
+            <Text fx:id="pickupdate"/>
+            <Text text="      Do: "/>
+            <Text fx:id="dropoffdate"/>
+        </HBox>
+    </VBox>
+
+    <VBox alignment="CENTER">
+        <Text text="Lokacija prevzema in oddaje" style="-fx-font-weight: bold;"/>
+        <HBox alignment="CENTER">
+            <Text text="Prevzem: "/>
+            <Text fx:id="pickuplocation"/>
+            <Text text="     Oddaja: "/>
+            <Text fx:id="dropofflocation"/>
+        </HBox>
+    </VBox>
+
+    <VBox alignment="CENTER">
+        <Text text="Izbrani avtomobil" style="-fx-font-weight: bold;"/>
+        <HBox alignment="CENTER">
+            <Text text="Znamka: "/>
+            <Text fx:id="carbrand"/>
+        </HBox>
+        <HBox alignment="CENTER">
+            <Text text="Menjalnik: "/>
+            <Text fx:id="transmission"/>
+        </HBox>
+        <HBox alignment="CENTER">
+            <Text text="Pogon: "/>
+            <Text fx:id="engine"/>
+        </HBox>
+    </VBox>
+
+    <HBox alignment="CENTER">
+        <Text text="Končna cena:" style="-fx-font-weight: bold;"/>
+        <Text fx:id="finalprice"/>
+        <Text text=" EUR"/>
+    </HBox>
+    <HBox alignment="CENTER">
+        <Text text="Izbrano zavarovanje: " style="-fx-font-weight: bold;"/>
+        <Text fx:id="insurance"/>
+    </HBox>
+
+
+    <VBox alignment="CENTER">
+        <Text text="Podatki o vozniku" style="-fx-font-weight: bold;"/>
+        <HBox alignment="CENTER">
+            <Text text="Ime in priimek: "/>
+            <Text fx:id="name"/>
+        </HBox>
+        <HBox alignment="CENTER">
+            <Text text="Naslov: "/>
+            <Text fx:id="address"/>
+        </HBox>
+        <HBox alignment="CENTER">
+            <Text text="Email: "/>
+            <Text fx:id="gmail"/>
+        </HBox>
+        <HBox alignment="CENTER">
+            <Text text="Telefonska številka: "/>
+            <Text fx:id="phone"/>
+        </HBox>
+    </VBox>
+
+    <HBox alignment="CENTER">
+        <Text text="Podatki o plačilu: " style="-fx-font-weight: bold;"/>
+        <Text text="Plačal bom prek spleta" fx:id="paymenttypecard"/>
+    </HBox>
+
+    <HBox alignment="CENTER">
+        <Text text="Številka kartice: " style="-fx-font-weight: bold;"/>
+        <Text fx:id="carddetails" />
+    </HBox>
+
+    <Text text="Podatke lahko popravite s kliki na gumb 'Nazaj'"/>
+
+    <Button text="Potrdi in zaključi plačilo" onAction="#onConfirmEverything"/>
+
+
+</VBox>

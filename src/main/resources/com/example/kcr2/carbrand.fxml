@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.text.Text?>
+<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.kcr2.CarbrandController"
+      prefHeight="500.0" prefWidth="600.0">
+
+    <fx:define>
+        <FXCollections fx:factory="observableArrayList" fx:id="smallcars">
+            <String fx:value="Audi A3"/>
+            <String fx:value="Toyota Yaris"/>
+            <String fx:value="Nissan Micra"/>
+        </FXCollections>
+    </fx:define>
+    <fx:define>
+        <FXCollections fx:factory="observableArrayList" fx:id="mediumcars">
+            <String fx:value="MB C180"/>
+            <String fx:value="Audi A5"/>
+            <String fx:value="Toyota Avensis"/>
+            <String fx:value="Honda Accord"/>
+            <String fx:value="Skoda Octavia"/>
+        </FXCollections>
+    </fx:define>
+    <fx:define>
+        <FXCollections fx:factory="observableArrayList" fx:id="largecars">
+            <String fx:value="Citroen Berlingo"/>
+            <String fx:value="Citroen C4 Grand Picasso"/>
+            <String fx:value="Ford C-MAX"/>
+        </FXCollections>
+    </fx:define>
+
+    <Text text="Izberite znamko avtomobila"/>
+
+    <ComboBox fx:id="carbrand" promptText="Znamka avtomobila"/>
+
+    <Text text="Napaka: Izberite znamko avtomobila." fx:id="errorbrand"/>
+
+
+    <Button text="Potrdi izbiro" onAction="#onConfirmCarBrandButtonClick"/>
+
+
+</VBox>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.text.Text?>
+<VBox alignment="CENTER" spacing="10.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.kcr2.CartypeController"
+      prefHeight="500.0" prefWidth="600.0">
+
+
+    <Text text="Izberite tip avtomobila"/>
+    <fx:define>
+        <FXCollections fx:factory="observableArrayList" fx:id="cartypes">
+            <String fx:value="Majhen"/>
+            <String fx:value="Srednji"/>
+            <String fx:value="Velik"/>
+        </FXCollections>
+    </fx:define>
+
+    <ComboBox fx:id="cartype" promptText="Tip avtomobila">
+        <items>
+            <fx:reference source="cartypes"/>
+        </items>
+    </ComboBox>
+
+    <Text text="Napaka: Izberite tip avtomobila" fx:id="errortype"/>
+
+    <Button text="Potrdi izbiro" onAction="#onConfirmCarTypeButtonClick"/>
+
+
+</VBox>

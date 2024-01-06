@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.kcr2.PaymenttypeController"
+      prefHeight="500.0" prefWidth="600.0">
+
+    <HBox alignment="CENTER">
+        <Text text="Končna cena znaša: " style="-fx-font-weight: bold;"/>
+        <Text fx:id="finalprice"/>
+        <Text text=" EUR"/>
+    </HBox>
+
+    <Text text="Izberite način plačila" style="-fx-font-weight: bold;"/>
+
+    <HBox alignment="CENTER">
+        <Button text="Ob prevzemu" onAction="#onPaymentTypeCash"/>
+        <Button text="Prek spleta" onAction="#onPaymentTypeCard"/>
+    </HBox>
+
+</VBox>

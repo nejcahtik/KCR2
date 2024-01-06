@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.kcr2.UserdataController"
+            prefHeight="500.0" prefWidth="600.0">
+
+    <Text text="Vnesite svoje podatke" style="-fx-font-weight: bold;"/>
+
+    <HBox alignment="CENTER" spacing="10">
+        <TextField promptText="Ime" fx:id="name"/>
+        <TextField promptText="Priimek" fx:id="surname"/>
+    </HBox>
+
+    <HBox alignment="CENTER" spacing="10">
+        <TextField  promptText="Naslov" fx:id="address"/>
+    </HBox>
+    <Text text="Napaka: Polja ime, priimek in naslov so obvezna." fx:id="erroraddress"/>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Text text="Rojstni datum: " style="-fx-font-weight: bold;"/>
+        <DatePicker fx:id="birthdate"/>
+    </HBox>
+
+    <Text text="Napaka: avto lahko najamejo samo osebe, starejše od 21 let." fx:id="errorolderthan21"/>
+
+    <HBox alignment="CENTER" spacing="10">
+        <TextField promptText="Email" fx:id="email"/>
+        <TextField promptText="Telefonska številka" fx:id="phone"/>
+    </HBox>
+
+    <Text text="Napaka: Vnesite svojo telefonsko številko ali email" fx:id="errorphone"/>
+
+
+    <Text text="Pred koliko leti ste pridobili vozniško dovoljenje?" style="-fx-font-weight: bold;"/>
+    <HBox alignment="CENTER" spacing="10">
+        <TextField promptText="Pred koliko leti ste pridobili vozniško dovoljenje?" fx:id="yearsoflicense"/>
+    </HBox>
+
+    <Text text="Napaka: avtomobil lahko najamejo le osebe, ki so vozniško dovoljenje pridobili pred dvema letoma ali več" fx:id="errorlicense"/>
+
+    <Button text="Potrdi" onAction="#onConfirmUserDataButtonClick"/>
+
+
+</VBox>

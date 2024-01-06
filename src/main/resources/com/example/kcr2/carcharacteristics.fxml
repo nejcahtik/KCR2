@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.collections.FXCollections?>
+<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.kcr2.CarcharacteristicsController"
+      prefHeight="500.0" prefWidth="600.0">
+
+    <Text text="Ta avto je na voljo samo s pogonom na bencin" fx:id="carpetrolonly" style="-fx-font-weight: bold;"/>
+    <Text text="Izberite vrsto goriva" fx:id="chooseenginetypetext"/>
+    <ComboBox fx:id="carengine" promptText="Pogon">
+        <items>
+            <FXCollections fx:factory="observableArrayList" fx:id="carengineselection">
+                <String fx:value="Diesel"/>
+                <String fx:value="Bencin"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <Text text="Ta avto je na voljo samo z ročnim menjalnikom" fx:id="carmanualonly" style="-fx-font-weight: bold;"/>
+    <Text text="Izberite tip menjalnika" fx:id="choosetransmissiontext"/>
+    <ComboBox fx:id="cartransmission" promptText="Menjalnik">
+        <items>
+            <FXCollections fx:factory="observableArrayList" fx:id="cartransmissionselection">
+                <String fx:value="Ročni"/>
+                <String fx:value="Samodejni"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <Text text="Napaka: Izberite vrsto goriva in tip menjalnika" fx:id="errorchars"/>
+
+    <Button text="Potrdi izbiro" onAction="#onConfirmCarCharacteristicsButtonClicked"/>
+
+</VBox>

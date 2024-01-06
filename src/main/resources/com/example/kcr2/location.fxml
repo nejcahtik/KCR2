@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.collections.FXCollections?>
+<VBox alignment="CENTER" spacing="10.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.kcr2.LocationController"
+      prefHeight="500.0" prefWidth="600.0">
+
+    <fx:define>
+        <FXCollections fx:factory="observableArrayList" fx:id="locations">
+            <String fx:value="Ljubljana"/>
+            <String fx:value="Maribor"/>
+            <String fx:value="Celje"/>
+            <String fx:value="Kranj"/>
+            <String fx:value="Velenje"/>
+            <String fx:value="Koper"/>
+            <String fx:value="Novo mesto"/>
+            <String fx:value="Murska Sobota"/>
+            <String fx:value="Jesenice"/>
+            <String fx:value="Portorož"/>
+            <String fx:value="Letališče Jožeta Pučnika Ljubljana"/>
+            <String fx:value="Letališče Edvarda Rusjana Maribor"/>
+        </FXCollections>
+    </fx:define>
+
+    <Text text="Izberite lokacijo prevzema"/>
+    <ComboBox fx:id="pickuplocation" promptText="Izberite lokacijo prevzema">
+        <items>
+            <fx:reference source="locations"/>
+        </items>
+    </ComboBox>
+
+    <Text text="Izberite končno lokacijo"/>
+    <ComboBox fx:id="dropofflocation" promptText="Izberite končno lokacijo">
+        <items>
+            <fx:reference source="locations"/>
+        </items>
+    </ComboBox>
+
+    <Text text="Napaka: Izberite začetno in končno lokacijo" fx:id="errorlocation"/>
+
+
+    <Button text="Potrdi izbiro" onAction="#onConfirmLocationsButtonClick"/>
+
+</VBox>

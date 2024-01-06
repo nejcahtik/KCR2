@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.kcr2.InsuranceController"
+            prefHeight="500.0" prefWidth="600.0">
+
+    <Text text="Bi želeli skleniti avtomobilsko zavarovanje?" style="-fx-font-weight: bold;"/>
+    <HBox alignment="CENTER">
+        <Text text="Cena zavarovanja za izbrani avtomobil na dan: "/>
+        <Text fx:id="insuranceprice"/>
+        <Text text=" EUR"/>
+    </HBox>
+
+    <CheckBox fx:id="insurancecheckbox" text="Želim skleniti zavarovanje"/>
+
+    <Button text="Potrdi izbiro" onAction="#onConfirmInsuranceButtonClick"/>
+
+
+</VBox>
