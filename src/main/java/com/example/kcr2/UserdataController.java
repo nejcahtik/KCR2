@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -36,11 +37,30 @@ public class UserdataController {
     private Text errorlicense;
     @FXML
     private Text errorphone;
+    @FXML
+    private Rectangle rect;
 
     @FXML
     private void initialize() {
         birthdate.setValue(LocalDate.of(1980, 1, 1));
         removeErrors();
+//        removeData();
+
+        if(CurrentData.enteredData.getUserData().getName() != null) {
+            name.setText(CurrentData.enteredData.getUserData().getName());
+            surname.setText(CurrentData.enteredData.getUserData().getSurname());
+            address.setText(CurrentData.enteredData.getUserData().getAddress());
+            email.setText(CurrentData.enteredData.getUserData().getEmail());
+            phone.setText(CurrentData.enteredData.getUserData().getPhoneNumber());
+            birthdate.setValue(CurrentData.enteredData.getUserData().getBirthday().toLocalDate());
+            yearsoflicense.setText((CurrentData.enteredData.getUserData().getYearsOfDriving()));
+        }
+
+    }
+
+    private void removeData() {
+        CurrentData.enteredData.getUserData().setEmail("");
+        CurrentData.enteredData.getUserData().setPhoneNumber("");
     }
 
 
@@ -63,11 +83,6 @@ public class UserdataController {
         if(!address.getText().equals("")) {CurrentData.enteredData.getUserData().setAddress(address.getText());}
         else {
             erroraddress.setText("Napaka: Polje 'naslov' je obvezno");
-            erroraddress.setVisible(true);return;
-        }
-
-        if(!address.getText().equals("")) {CurrentData.enteredData.getUserData().setAddress(address.getText());}
-        else {
             erroraddress.setVisible(true);return;
         }
 
@@ -96,6 +111,7 @@ public class UserdataController {
                 errorlicense.setText("Napaka: avtomobil lahko najamejo le osebe, ki so vozniško dovoljenje pridobili pred dvema letoma ali več");
                 errorlicense.setVisible(true);return;
             }
+            CurrentData.enteredData.getUserData().setYearsOfDriving(String.valueOf(yearsOfLicense));
         }
         catch(Exception e) {
             errorlicense.setText("Napaka: vnesite število let (celo število)");
@@ -104,7 +120,7 @@ public class UserdataController {
 
         Button button = (Button) event.getSource();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("insurance.fxml"));
-
+        CurrentData.enteredData.userDataSet = true;
         Parent root = loader.load();
         Scene newScene = new Scene(root);
         Stage stage = (Stage) button.getScene().getWindow();
@@ -124,5 +140,16 @@ public class UserdataController {
         errorolderthan21.setVisible(false);
         errorlicense.setVisible(false);
         errorphone.setVisible(false);
+    }
+
+    @FXML
+    protected void onBackButtonClicked(ActionEvent event) throws IOException {
+        Button button = (Button) event.getSource();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("price.fxml"));
+        Parent root = loader.load();
+        Scene newScene = new Scene(root);
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.setScene(newScene);
+
     }
 }

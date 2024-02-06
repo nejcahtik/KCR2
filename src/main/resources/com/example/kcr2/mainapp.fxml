@@ -6,13 +6,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.text.Text?>
 <VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.kcr2.ThankyoucomeagainController"
-      prefHeight="500.0" prefWidth="1230.0">
-
-    <Text text="Zahvaljujemo se za izkazano zaupanje in se vidimo kmalu" style="-fx-font-weight: bold;"/>
-
+            fx:controller="com.example.kcr2.MainAppController"
+            prefHeight="500.0" prefWidth="600.0">
 
 </VBox>

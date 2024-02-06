@@ -101,8 +101,8 @@ public class EnteredData {
         this.carBrand = carBrand;
     }
 
-    private String pickupLocation;
-    private String dropoffLocation;
+    private String pickupLocation = "";
+    private String dropoffLocation = "";
 
     private CarType carType;
 
@@ -111,6 +111,7 @@ public class EnteredData {
     private boolean manualTransmission;
     private boolean dieselEngine;
     private UserData userData = new UserData();
+    public boolean userDataSet = false;
     private boolean insuranceChosen;
     private PaymentType paymentType;
     private CreditCardData creditCardData = new CreditCardData();

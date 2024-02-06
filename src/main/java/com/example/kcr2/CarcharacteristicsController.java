@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -30,14 +31,34 @@ public class CarcharacteristicsController {
     @FXML
     public ComboBox<String>  cartransmission;
     public Text errorchars;
+    @FXML
+    private Rectangle rect;
 
     @FXML
     private void initialize() {
 
         hideErrors();
-
+        removeData();
         setCarEngineVisibility();
-        setCarTransmissionVissibility();
+        setCarTransmissionVisibility();
+
+        if(CurrentData.enteredData.isDieselEngine()) {
+            carengine.setValue("Diesel");
+        }
+        else {
+            carengine.setValue("Bencin");
+        }
+
+        if(CurrentData.enteredData.isManualTransmission()) {
+            cartransmission.setValue("Ročni");
+        }
+        else {
+            cartransmission.setValue("Samodejni");
+        }
+    }
+
+    private void removeData() {
+
     }
 
     private void setCarEngineVisibility() {
@@ -61,7 +82,7 @@ public class CarcharacteristicsController {
         }
     }
 
-    private void setCarTransmissionVissibility() {
+    private void setCarTransmissionVisibility() {
         if(CurrentData.enteredData.getCarBrand().isAutomaticTransmissionVariant() &&
                 CurrentData.enteredData.getCarBrand().isManualTransmissionVariant()) {
             cartransmission.setVisible(true);
@@ -71,11 +92,13 @@ public class CarcharacteristicsController {
         else if(CurrentData.enteredData.getCarBrand().isManualTransmissionVariant()) {
             cartransmission.setVisible(false);
             carmanualonly.setText("Ta avto je na voljo samo z ročnim menjalnikom");
+            CurrentData.enteredData.setManualTransmission(true);
             choosetransmissiontext.setVisible(false);
         }
         else if(CurrentData.enteredData.getCarBrand().isAutomaticTransmissionVariant()) {
             cartransmission.setVisible(false);
             carmanualonly.setText("Ta avto je na voljo samo z avtomatskim menjalnikom");
+            CurrentData.enteredData.setManualTransmission(false);
             choosetransmissiontext.setVisible(false);
         }
     }
@@ -104,5 +127,16 @@ public class CarcharacteristicsController {
 
     private void hideErrors() {
         errorchars.setVisible(false);
+    }
+
+    @FXML
+    protected void onBackButtonClicked(ActionEvent event) throws IOException {
+        Button button = (Button) event.getSource();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("carbrand.fxml"));
+        Parent root = loader.load();
+        Scene newScene = new Scene(root);
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.setScene(newScene);
+
     }
 }

@@ -8,10 +8,39 @@
 
 <?import javafx.collections.FXCollections?>
 <?import javafx.scene.text.Text?>
-<VBox alignment="CENTER" spacing="10.0" xmlns:fx="http://javafx.com/fxml"
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.shape.Rectangle?>
+<VBox alignment="TOP_CENTER" spacing="10.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.kcr2.CartypeController"
       prefHeight="500.0" prefWidth="600.0">
 
+    <StackPane>
+        <Rectangle width="${hboxmenu.width}" height="30" fill="#ffffff" stroke="black" fx:id="rect"/>
+        <HBox alignment="CENTER" fx:id="hboxmenu">
+        <HBox>
+            <Button fx:id="backbutton" onAction="#onBackButtonClicked">
+                <graphic>
+                    <ImageView fitHeight="30" fitWidth="30">
+                        <Image url="file:/home/nejc/IdeaProjects/kcr2/src/main/resources/images/backarrow.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+
+        </HBox>
+        <Text text="     Čas izposoje > " style="-fx-font-weight: bold;"/>
+        <Text text="Lokacija > " style="-fx-font-weight: bold;"/>
+        <Text text="Tip avtomobila > " style="-fx-font-weight: bold;"/>
+        <Text text="Znamka avtomobila > "/>
+        <Text text="Lastnosti avtomobila > "/>
+        <Text text="Cena najema > "/>
+        <Text text="Podatki o vozniku  > "/>
+        <Text text="Zavarovanje > "/>
+        <Text text="Način plačila > "/>
+        <Text text="Pregled podatkov"/>
+    </HBox>
+    </StackPane>
+    <Label text="" VBox.vgrow="ALWAYS" />
 
     <Text text="Izberite tip avtomobila"/>
     <fx:define>
@@ -28,7 +57,7 @@
         </items>
     </ComboBox>
 
-    <Text text="Napaka: Izberite tip avtomobila" fx:id="errortype"/>
+    <Text text="Napaka: Izberite tip avtomobila" fx:id="errortype" fill="RED"/>
 
     <Button text="Potrdi izbiro" onAction="#onConfirmCarTypeButtonClick"/>
 

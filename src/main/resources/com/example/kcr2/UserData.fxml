@@ -7,10 +7,39 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.kcr2.UserdataController"
-            prefHeight="500.0" prefWidth="600.0">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.shape.Rectangle?>
+<VBox alignment="TOP_CENTER" spacing="10.0" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.kcr2.UserdataController"
+      prefHeight="500.0" prefWidth="600.0">
+
+    <StackPane>
+        <Rectangle width="${hboxmenu.width}" height="30" fill="#ffffff" stroke="black" fx:id="rect"/>
+        <HBox alignment="CENTER" fx:id="hboxmenu">
+        <HBox>
+            <Button fx:id="backbutton" onAction="#onBackButtonClicked">
+                <graphic>
+                    <ImageView fitHeight="30" fitWidth="30">
+                        <Image url="file:/home/nejc/IdeaProjects/kcr2/src/main/resources/images/backarrow.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+
+        </HBox>        <Text text="     Čas izposoje > " style="-fx-font-weight: bold;"/>
+        <Text text="Lokacija > " style="-fx-font-weight: bold;"/>
+        <Text text="Tip avtomobila > " style="-fx-font-weight: bold;"/>
+        <Text text="Znamka avtomobila > " style="-fx-font-weight: bold;"/>
+        <Text text="Lastnosti avtomobila > " style="-fx-font-weight: bold;"/>
+        <Text text="Cena najema > " style="-fx-font-weight: bold;"/>
+        <Text text="Podatki o vozniku > " style="-fx-font-weight: bold;"/>
+        <Text text="Zavarovanje > "/>
+        <Text text="Način plačila > "/>
+        <Text text="Pregled podatkov"/>
+    </HBox>
+    </StackPane>
+    <Label text="" VBox.vgrow="ALWAYS" />
 
     <Text text="Vnesite svoje podatke" style="-fx-font-weight: bold;"/>
 
@@ -22,21 +51,21 @@
     <HBox alignment="CENTER" spacing="10">
         <TextField  promptText="Naslov" fx:id="address"/>
     </HBox>
-    <Text text="Napaka: Polja ime, priimek in naslov so obvezna." fx:id="erroraddress"/>
+    <Text text="Napaka: Polja ime, priimek in naslov so obvezna." fx:id="erroraddress" fill="RED"/>
 
     <HBox spacing="10" alignment="CENTER">
         <Text text="Rojstni datum: " style="-fx-font-weight: bold;"/>
         <DatePicker fx:id="birthdate"/>
     </HBox>
 
-    <Text text="Napaka: avto lahko najamejo samo osebe, starejše od 21 let." fx:id="errorolderthan21"/>
+    <Text text="Napaka: avto lahko najamejo samo osebe, starejše od 21 let." fx:id="errorolderthan21" fill="RED"/>
 
     <HBox alignment="CENTER" spacing="10">
         <TextField promptText="Email" fx:id="email"/>
         <TextField promptText="Telefonska številka" fx:id="phone"/>
     </HBox>
 
-    <Text text="Napaka: Vnesite svojo telefonsko številko ali email" fx:id="errorphone"/>
+    <Text text="Napaka: Vnesite svojo telefonsko številko ali email" fx:id="errorphone" fill="RED"/>
 
 
     <Text text="Pred koliko leti ste pridobili vozniško dovoljenje?" style="-fx-font-weight: bold;"/>
@@ -44,7 +73,7 @@
         <TextField promptText="Pred koliko leti ste pridobili vozniško dovoljenje?" fx:id="yearsoflicense"/>
     </HBox>
 
-    <Text text="Napaka: avtomobil lahko najamejo le osebe, ki so vozniško dovoljenje pridobili pred dvema letoma ali več" fx:id="errorlicense"/>
+    <Text text="Napaka: avtomobil lahko najamejo le osebe, ki so vozniško dovoljenje pridobili pred dvema letoma ali več" fx:id="errorlicense" fill="RED"/>
 
     <Button text="Potrdi" onAction="#onConfirmUserDataButtonClick"/>
 

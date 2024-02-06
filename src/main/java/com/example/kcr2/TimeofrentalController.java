@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.converter.LocalTimeStringConverter;
@@ -19,6 +20,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class TimeofrentalController {
+    public Button skipButton;
     @FXML
     private DatePicker datePickerStart;
     @FXML
@@ -35,6 +37,8 @@ public class TimeofrentalController {
     private Text errornumberstart;
     @FXML
     private Text errornumberend;
+    @FXML
+    private Rectangle rect;
 
 
     @FXML
@@ -43,6 +47,25 @@ public class TimeofrentalController {
         datePickerStart.setValue(LocalDate.now());
         datePickerEnd.setValue(LocalDate.now());
         hideErrors();
+        //removeData();
+
+
+        if(CurrentData.enteredData.getRentalStartDateTime() != null)  {
+            datePickerStart.setValue(CurrentData.enteredData.getRentalStartDateTime().toLocalDate());
+            datePickerEnd.setValue(CurrentData.enteredData.getRentalEndDateTime().toLocalDate());
+            pickuphour.setValue(String.valueOf(CurrentData.enteredData.getRentalStartDateTime().toLocalTime().getHour()));
+            pickupminute.setValue(String.valueOf(CurrentData.enteredData.getRentalStartDateTime().toLocalTime().getMinute()));
+
+            dropoffhour.setValue(String.valueOf(CurrentData.enteredData.getRentalEndDateTime().toLocalTime().getHour()));
+            dropoffminute.setValue(String.valueOf(CurrentData.enteredData.getRentalEndDateTime().toLocalTime().getMinute()));
+
+
+        }
+    }
+
+    private void removeData() {
+        CurrentData.enteredData.setRentalStartDateTime(null);
+        CurrentData.enteredData.setRentalEndDateTime(null);
     }
 
     @FXML
@@ -78,6 +101,8 @@ public class TimeofrentalController {
             return;
         }
 
+
+
         CurrentData.enteredData.setRentalStartDateTime(start);
         CurrentData.enteredData.setRentalEndDateTime(end);
 
@@ -93,5 +118,14 @@ public class TimeofrentalController {
         errornumberstart.setVisible(false);
     }
 
-    //todo: back button and remove data from CurrentData.enteredData
+    @FXML
+    protected void onBackButtonClicked(ActionEvent event) throws IOException {
+        Button button = (Button) event.getSource();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("welcomescreen.fxml"));
+        Parent root = loader.load();
+        Scene newScene = new Scene(root);
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.setScene(newScene);
+
+    }
 }

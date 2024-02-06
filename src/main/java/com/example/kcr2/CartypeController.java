@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -17,10 +18,37 @@ public class CartypeController {
     public Text errortype;
     @FXML
     private ComboBox<String> cartype;
+    @FXML
+    private Rectangle rect;
 
     @FXML
     private void initialize() {
         hideErrors();
+//        removeData();
+
+        if(CurrentData.enteredData.getCarType() != null) {
+            cartype.setValue(getCarTypeFromValue());
+        }
+
+    }
+
+    private String getCarTypeFromValue() {
+        String carType = CurrentData.enteredData.getCarType().name();
+
+        if(carType.equals("SMALL")) {
+            return "Majhen";
+        }
+        else if(carType.equals("MEDIUM")) {
+            return "Srednji";
+        }
+        else if(carType.equals("LARGE")) {
+            return "Velik";
+        }
+        return "";
+    }
+
+    private void removeData() {
+        CurrentData.enteredData.setCarType(null);
     }
 
     @FXML
@@ -56,8 +84,17 @@ public class CartypeController {
                 throw new IllegalArgumentException("this car type not supported");
         }
     }
-    //todo: back button and remove data from CurrentData.enteredData
 
+    @FXML
+    protected void onBackButtonClicked(ActionEvent event) throws IOException {
+        Button button = (Button) event.getSource();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("location.fxml"));
+        Parent root = loader.load();
+        Scene newScene = new Scene(root);
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.setScene(newScene);
+
+    }
 
 
 }

@@ -8,9 +8,41 @@
 
 <?import javafx.scene.text.Text?>
 <?import javafx.collections.FXCollections?>
-<VBox alignment="CENTER" spacing="10.0" xmlns:fx="http://javafx.com/fxml"
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.shape.Rectangle?>
+<VBox alignment="TOP_CENTER" spacing="10.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.kcr2.TimeofrentalController"
-      prefHeight="500.0" prefWidth="600.0">
+      prefHeight="500.0" prefWidth="1230.0">
+
+        <StackPane>
+            <Rectangle width="${hboxmenu.width}" height="30" fill="#ffffff" stroke="black" fx:id="rect"/>
+            <HBox alignment="CENTER" fx:id="hboxmenu">
+                <HBox>
+                    <Button fx:id="backbutton" onAction="#onBackButtonClicked">
+                        <graphic>
+                            <ImageView fitHeight="30" fitWidth="30">
+                                <Image url="file:/home/nejc/IdeaProjects/kcr2/src/main/resources/images/backarrow.png"/>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+
+                </HBox>
+                <Text text="    Čas izposoje > " style="-fx-font-weight: bold;"/>
+                <Text text="Lokacija > "/>
+                <Text text="Tip avtomobila > "/>
+                <Text text="Znamka avtomobila > "/>
+                <Text text="Lastnosti avtomobila > "/>
+                <Text text="Cena najema > "/>
+                <Text text="Podatki o vozniku  > "/>
+                <Text text="Zavarovanje > "/>
+                <Text text="Način plačila > "/>
+                <Text text="Pregled podatkov"/>
+            </HBox>
+        </StackPane>
+
+
+    <Label text="" VBox.vgrow="ALWAYS" />
 
     <fx:define>
         <FXCollections fx:factory="observableArrayList" fx:id="hours">
@@ -67,7 +99,7 @@
         </ComboBox>
     </HBox>
 
-    <Text text="Napaka: Izberite čas prevzema." fx:id="errornumberstart"/>
+    <Text text="Napaka: Izberite čas prevzema." fx:id="errornumberstart" fill="RED"/>
 
     <Text text="Izberite končni datum vaše izposoje"/>
     <DatePicker fx:id="datePickerEnd"/>
@@ -86,7 +118,7 @@
         </ComboBox>
     </HBox>
 
-    <Text text="Napaka: Izberite čas zaključka najema." fx:id="errornumberend"/>
+    <Text text="Napaka: Izberite čas zaključka najema." fx:id="errornumberend" fill="RED"/>
 
     <Button text="Potrdi izbiro" onAction="#onConfirmDatesButtonClick"/>
 

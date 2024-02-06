@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -29,6 +30,8 @@ public class OrderdetailsController {
     public Text gmail;
     public Text phone;
     public Text carddetails;
+    @FXML
+    private Rectangle rect;
 
     @FXML
     private void initialize() {
@@ -84,7 +87,7 @@ public class OrderdetailsController {
 
     private static String hideCardData(String cardNumberString) {
         if (cardNumberString.length() >= 12) {
-            return "XXXXXXXXXXXX" + cardNumberString.substring(12);
+            return "XXXX-XXXX-XXXX-" + cardNumberString.substring(12);
         } else {
             System.out.println("Input string has less than 12 characters.");
             return cardNumberString;
@@ -116,5 +119,73 @@ public class OrderdetailsController {
         Duration duration = Duration.between(startDate, endDate);
         return (duration.toDays() + 1) *
                 CurrentData.enteredData.getCarBrand().getInsurancePricePerDay();
+    }
+
+    @FXML
+    protected void onBackButtonClicked(ActionEvent event) throws IOException {
+        Button button = (Button) event.getSource();
+        FXMLLoader loader;
+        if(CurrentData.enteredData.getPaymentType() == PaymentType.CASH) {
+            loader = new FXMLLoader(getClass().getResource("paymenttype.fxml"));
+        }
+        else {
+            loader = new FXMLLoader(getClass().getResource("creditcarddetails.fxml"));
+        }
+
+        Parent root = loader.load();
+        Scene newScene = new Scene(root);
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.setScene(newScene);
+
+    }
+
+    @FXML
+    protected void onDateFix(ActionEvent event) throws IOException {
+        Button button = (Button) event.getSource();
+        FXMLLoader loader = new FXMLLoader((getClass().getResource("timeofrental.fxml")));
+        Parent root = loader.load();
+        Scene newScene = new Scene(root);
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.setScene(newScene);
+    }
+
+    @FXML
+    protected void onLocationFix(ActionEvent event) throws IOException {
+        Button button = (Button) event.getSource();
+        FXMLLoader loader = new FXMLLoader((getClass().getResource("location.fxml")));
+        Parent root = loader.load();
+        Scene newScene = new Scene(root);
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.setScene(newScene);
+    }
+
+    @FXML
+    protected void onDriverFix(ActionEvent event) throws IOException {
+        Button button = (Button) event.getSource();
+        FXMLLoader loader = new FXMLLoader((getClass().getResource("UserData.fxml")));
+        Parent root = loader.load();
+        Scene newScene = new Scene(root);
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.setScene(newScene);
+    }
+
+    @FXML
+    protected void onPaymentFix(ActionEvent event) throws IOException {
+        Button button = (Button) event.getSource();
+        FXMLLoader loader = new FXMLLoader((getClass().getResource("paymenttype.fxml")));
+        Parent root = loader.load();
+        Scene newScene = new Scene(root);
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.setScene(newScene);
+    }
+
+    @FXML
+    protected void onCarFix(ActionEvent event) throws IOException {
+        Button button = (Button) event.getSource();
+        FXMLLoader loader = new FXMLLoader((getClass().getResource("cartype.fxml")));
+        Parent root = loader.load();
+        Scene newScene = new Scene(root);
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.setScene(newScene);
     }
 }

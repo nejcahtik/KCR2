@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -21,12 +22,19 @@ public class CarbrandController {
     public Text errorbrand;
     @FXML
     private ComboBox<String> carbrand;
+    @FXML
+    private Rectangle rect;
 
     @FXML
     private void initialize() {
 
         initCarBrands();
         hideErrors();
+//        removeData();
+    }
+
+    private void removeData() {
+        CurrentData.enteredData.setCarBrand(null);
     }
 
     @FXML
@@ -64,6 +72,11 @@ public class CarbrandController {
                 carbrand.setItems(getLargeCars());
                 break;
 
+        }
+
+        if(CurrentData.enteredData.getCarBrand() != null) {
+            String name = CurrentData.enteredData.getCarBrand().getName();
+            carbrand.setValue(name);
         }
     }
 
@@ -118,6 +131,17 @@ public class CarbrandController {
                 .filter(c -> c.getName().equals(carBrandString))
                 .findAny()
                 .orElseGet(null);
+    }
+
+    @FXML
+    protected void onBackButtonClicked(ActionEvent event) throws IOException {
+        Button button = (Button) event.getSource();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("cartype.fxml"));
+        Parent root = loader.load();
+        Scene newScene = new Scene(root);
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.setScene(newScene);
+
     }
 
 }

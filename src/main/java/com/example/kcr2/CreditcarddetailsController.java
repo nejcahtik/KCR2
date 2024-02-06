@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -29,11 +30,22 @@ public class CreditcarddetailsController {
     public Text errornumber;
     public Text errorname;
     public Text errorcardnumber;
+    @FXML
+    private Rectangle rect;
 
     @FXML
     private void initialize() {
 
         hideErrors();
+
+        if(CurrentData.enteredData.getCreditCardData().getCardHolder() != null) {
+            name.setText(CurrentData.enteredData.getCreditCardData().getCardHolder());
+            cardnumber.setText(CurrentData.enteredData.getCreditCardData().getThatLongNumberOnTheCard());
+            ccv.setText(CurrentData.enteredData.getCreditCardData().getCCV());
+            year.setText(String.valueOf(CurrentData.enteredData.getCreditCardData().getExpiryDate().getYear()));
+            month.setText(String.valueOf(CurrentData.enteredData.getCreditCardData().getExpiryDate().getMonthValue()));
+
+        }
     }
 
 
@@ -117,5 +129,16 @@ public class CreditcarddetailsController {
     private static int countDigits(long number) {
         String numberAsString = Long.toString(Math.abs(number));
         return numberAsString.length();
+    }
+
+    @FXML
+    protected void onBackButtonClicked(ActionEvent event) throws IOException {
+        Button button = (Button) event.getSource();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("paymenttype.fxml"));
+        Parent root = loader.load();
+        Scene newScene = new Scene(root);
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.setScene(newScene);
+
     }
 }

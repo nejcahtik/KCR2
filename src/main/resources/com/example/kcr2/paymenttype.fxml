@@ -7,10 +7,41 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.text.Text?>
-<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx"
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.shape.Rectangle?>
+<VBox alignment="TOP_CENTER" spacing="10.0" xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.kcr2.PaymenttypeController"
       prefHeight="500.0" prefWidth="600.0">
+
+
+    <StackPane>
+        <Rectangle width="${hboxmenu.width}" height="30" fill="#ffffff" stroke="black" fx:id="rect"/>
+        <HBox alignment="CENTER" fx:id="hboxmenu">
+        <HBox>
+            <Button fx:id="backbutton" onAction="#onBackButtonClicked">
+                <graphic>
+                    <ImageView fitHeight="30" fitWidth="30">
+                        <Image url="file:/home/nejc/IdeaProjects/kcr2/src/main/resources/images/backarrow.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+
+        </HBox>
+        <Text text="     Čas izposoje > " style="-fx-font-weight: bold;"/>
+        <Text text="Lokacija > " style="-fx-font-weight: bold;"/>
+        <Text text="Tip avtomobila > " style="-fx-font-weight: bold;"/>
+        <Text text="Znamka avtomobila > " style="-fx-font-weight: bold;"/>
+        <Text text="Lastnosti avtomobila > " style="-fx-font-weight: bold;"/>
+        <Text text="Cena najema > " style="-fx-font-weight: bold;"/>
+        <Text text="Podatki o vozniku > " style="-fx-font-weight: bold;"/>
+        <Text text="Zavarovanje > " style="-fx-font-weight: bold;"/>
+        <Text text="Način plačila > " style="-fx-font-weight: bold;"/>
+        <Text text="Pregled podatkov"/>
+    </HBox>
+    </StackPane>
+    <Label text="" VBox.vgrow="ALWAYS" />
 
     <HBox alignment="CENTER">
         <Text text="Končna cena znaša: " style="-fx-font-weight: bold;"/>
